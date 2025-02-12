@@ -10,6 +10,8 @@ General results:
 
 from time import monotonic
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
+import asyncio
+import aiohttp
 import urllib.request
 
 URLS = [
@@ -58,7 +60,7 @@ URLS = [
 
 # Retrieve a single page and report the URL and contents
 def load_url(url):
-    print(f"\tLoading {url}")
+    # print(f"\tLoading {url}")
     with urllib.request.urlopen(url, timeout=60) as conn:
         return conn.read()
 
@@ -96,10 +98,26 @@ def load_with_thread_pool():
     return result3
 
 
+async def async_load_url(url, session):
+    # print(f"\tLoading {url}")
+    async with session.get(url) as response:
+        return await response.read()
+
+
+async def load_with_asyncio():
+    elapsed = monotonic()
+    async with aiohttp.ClientSession() as session:
+        tasks = [async_load_url(url, session) for url in URLS]
+        result4 = await asyncio.gather(*tasks)
+    print(f"\nAsyncio spent: {(monotonic() - elapsed):.2f}\n")
+    return dict(zip(URLS, result4))
+
+
 if __name__ == "__main__":
     print(f"\nLoading {len(URLS)} URLs...")
     load_one_by_one()
     load_with_process_pool()
     load_with_thread_pool()
+    asyncio.run(load_with_asyncio())
     print("Done!")
     input("Press Enter to finish...")
