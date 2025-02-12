@@ -34,6 +34,6 @@ powershell -ExecutionPolicy ByPass -c {$env:UV_INSTALL_DIR = "C:\<one_drive_dir>
     uv init --python 3.12
     
     # Execute the scripts
-    uv run 01_Intensive_CPU.py
-    uv run 02_Intensive_IO.py
+    uv run 01_intensive_cpu.py
+    uv run 02_intensive_io.py
 ```
