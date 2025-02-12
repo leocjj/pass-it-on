@@ -139,20 +139,20 @@ def calculate_one_by_one():
     result = []
     for prime in PRIMES:
         result.append(is_prime(prime))
-    print(f"\tfor loop spent: {(monotonic() - elapsed):.2f}")
+    print(f"\nfor loop spent: {(monotonic() - elapsed):.2f}")
 
 
 def calculate_with_list_comprehension():
     elapsed = monotonic()
     result = [is_prime(prime) for prime in PRIMES]
-    print(f"\tList comprehension spent: {(monotonic() - elapsed):.2f}")
+    print(f"\nList comprehension spent: {(monotonic() - elapsed):.2f}")
     return result
 
 
 def calculate_with_list_map():
     elapsed = monotonic()
     result = list(map(is_prime, PRIMES))
-    print(f"\tList map spent: {(monotonic() - elapsed):.2f}")
+    print(f"\nList map spent: {(monotonic() - elapsed):.2f}")
     return result
 
 
@@ -190,7 +190,7 @@ async def calculate_with_asyncio():
     elapsed = monotonic()
     tasks = [async_is_prime(prime) for prime in PRIMES]
     result = await asyncio.gather(*tasks)
-    print(f"\tAsyncio spent: {(monotonic() - elapsed):.2f}")
+    print(f"\nAsyncio spent: {(monotonic() - elapsed):.2f}")
     return result
 
 
