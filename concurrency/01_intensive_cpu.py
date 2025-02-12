@@ -12,6 +12,7 @@ General results:
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 from time import monotonic
 from math import floor, sqrt
+import asyncio
 
 PRIMES = [
     112272535095293,
@@ -180,6 +181,19 @@ def calculate_with_thread_pool(workers):
     return result
 
 
+async def async_is_prime(n):
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, is_prime, n)
+
+
+async def calculate_with_asyncio():
+    elapsed = monotonic()
+    tasks = [async_is_prime(prime) for prime in PRIMES]
+    result = await asyncio.gather(*tasks)
+    print(f"\tAsyncio spent: {(monotonic() - elapsed):.2f}")
+    return result
+
+
 if __name__ == "__main__":
     print(f"\nCalculating {len(PRIMES)} primes...\n")
     calculate_one_by_one()
@@ -189,5 +203,6 @@ if __name__ == "__main__":
         print(f"\nWorkers: {workers}")
         calculate_with_thread_pool(workers)
         calculate_with_process_pool(workers)
+    asyncio.run(calculate_with_asyncio())
 
     print("\n")
