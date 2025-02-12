@@ -30,8 +30,11 @@ powershell -ExecutionPolicy ByPass -c {$env:UV_INSTALL_DIR = "C:\<one_drive_dir>
 
     # Create a virtual environment
     uv sync
+
         or
+
     uv init --python 3.12
+    uv add aiohttp
     
     # Execute the scripts
     uv run 01_intensive_cpu.py
