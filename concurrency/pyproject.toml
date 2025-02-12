@@ -1,0 +1,7 @@
+[project]
+name = "concurrency-and-parallelism"
+version = "0.1.0"
+description = "Concurrency and parallelism pass-it-on"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
