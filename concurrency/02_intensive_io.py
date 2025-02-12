@@ -1,7 +1,8 @@
 """
 General results:
+    * Process Pool Executor works WELL for intensive IO tasks.
     * Thread Pool Executor works GREAT for intensive IO tasks.
-    * Process Pool Executor works GOOD for intensive IO tasks.
+    * Asyncio functions work EXCELLENT for intensive IO tasks.
     * Elapsed times:
         Dict comprehension calling a function: 40.3
         Process Pool Executor calling a function: 12.6
