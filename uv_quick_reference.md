@@ -24,7 +24,7 @@ Whether you're setting up a new project or managing dependencies, this guide wil
 
     uv run .\hello.py
 
-    uv add <dependency_1> <dependency_2> ...
+    uv add <python_package_name_1> <python_package_name_2> ...
 
     uv run <file.py>
 ```
