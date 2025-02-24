@@ -6,15 +6,16 @@ Whether you're setting up a new project or managing dependencies, this guide wil
 
 
 ```bash
-    # On macOS, Linux or WSL (recommended)
+    # Install 'uv' on macOS, Linux or WSL (recommended)
     curl -LsSf https://astral.sh/uv/install.sh | sh
 
-    # On Windows
+    # Install 'uv' on Windows
     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
-    # On Windows with ThreatLocker - Change default installation paths
-    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\python"
-    powershell -ExecutionPolicy ByPass -c {$env:UV_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\bin"; irm https://astral.sh/uv/install.ps1 | iex}
+    # Install 'uv' on Windows with ThreatLocker
+    # This change default installation paths to use a different directory
+    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\python"
+    powershell -ExecutionPolicy ByPass -c {$env:UV_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin"; irm https://astral.sh/uv/install.ps1 | iex}
 
     # restart your shell (i.e. close and open it again)
 
@@ -40,8 +41,8 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
     # On Windows with ThreatLocker - Change default installation paths
-    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\python"
-    powershell -ExecutionPolicy ByPass -c {$env:UV_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\bin"; irm https://astral.sh/uv/install.ps1 | iex}
+    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\python"
+    powershell -ExecutionPolicy ByPass -c {$env:UV_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin"; irm https://astral.sh/uv/install.ps1 | iex}
 
     # With pip
     pip install uv
@@ -50,7 +51,7 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     uv self update
     ```
 
-2. **Create a new Python project with one of these three options**
+1. **Create a new Python project with one of these three options**
 
     ```bash
     mkdir <project_dir>
@@ -65,7 +66,7 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     cd <project_dir>
     ```
 
-2. Create the environment
+1. **Create the environment**
 
     ```bash
     # It's created automatically when a Python file is executed.
@@ -74,7 +75,7 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     ```
 
 
-3. Working with dependencies
+1. **Working with dependencies**
 
     ```bash
     # To add a new dependency (version number is optional, install the latest)
@@ -101,12 +102,11 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     uv add fastapi
     ```
 
-4. **Installing and managing Python itself**
+1. **Installing and managing Python itself**
 
     ```bash
-    # Set a different directory for python binary installations
-    # Default is $env:APPDATA   # APPDATA=C:\Users\lcalderon\AppData\Roaming
-    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\python"
+    # Set a different directory for python binary installations. Default is $env:APPDATA, where APPDATA=C:\Users\<windows_user>\AppData\Roaming
+    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\python"
 
     # When a new project is created, uv install and assign the latest version
     # of CPython available. If a different version is needed, install it with:
@@ -121,7 +121,7 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     uv run --python pypy@3.10 <file.py>
     ```
 
-5. **Other options**
+1. **Other options**
 
     ```bash
     # uv use pyproject.toml file to specify the main dependencies of the project,
@@ -152,11 +152,11 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     # To check/set environment variables in Powershell
     dir env:
     $env:UV_PYTHON_INSTALL_DIR
-    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\python"
+    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\python"
 
-    # To add C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\bin to your PATH, either restart your shell or run:
-    set Path=C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\bin;%Path%   (cmd)
-    $env:Path = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\bin;$env:Path"   (powershell)
+    # To add C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin to your PATH, either restart your shell or run:
+    set Path=C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin;%Path%   (cmd)
+    $env:Path = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin;$env:Path"   (powershell)
     
     # To know the python and tools binaries directories
     uv python dir
@@ -170,11 +170,12 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     $ rm $HOME\.local\bin\uvx.exe
 
     # Others environment variables
-    $env:UV_INSTALL_DIR =        "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\bin";
-    $env:UV_PYTHON_BIN_DIR =     "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\bin\python";
-    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\python";
-    $env:UV_CACHE_DIR =          "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\cache";
+    $env:UV_INSTALL_DIR =        "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin";
+    $env:UV_PYTHON_BIN_DIR =     "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin\python";
+    $env:UV_PYTHON_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\python";
+    $env:UV_CACHE_DIR =          "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\cache";
     ```
+
 ## References
 
 https://docs.astral.sh/uv/getting-started/installation/
