@@ -1,5 +1,9 @@
-This file provides a brief overview of the key steps and commands for using `uv` in your Python projects.
+# UV - Quick Reference
+
+Brief overview of the key steps and commands for using `uv` in your Python projects.
+
 It covers installation, project creation, dependency management, Python version handling, and other useful options.
+
 Whether you're setting up a new project or managing dependencies, this guide will help you get started quickly and efficiently.
 
 ## TL;DR
@@ -66,7 +70,7 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     cd <project_dir>
     ```
 
-1. **Create the environment**
+1. **Create and test the Python environment**
 
     ```bash
     # It's created automatically when a Python file is executed.
