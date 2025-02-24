@@ -1,15 +1,9 @@
-https://docs.astral.sh/uv/getting-started/installation/
-https://docs.astral.sh/uv/reference/cli/
-
-https://pypi.org/project/uv/
-https://github.com/astral-sh/uv
-
-
-## Short Long Story
-
-This section provides a brief overview of the key steps and commands for using `uv` in your Python projects.
+This file provides a brief overview of the key steps and commands for using `uv` in your Python projects.
 It covers installation, project creation, dependency management, Python version handling, and other useful options.
 Whether you're setting up a new project or managing dependencies, this guide will help you get started quickly and efficiently.
+
+## TL;DR
+
 
 ```bash
     # On macOS, Linux or WSL (recommended)
@@ -20,10 +14,9 @@ Whether you're setting up a new project or managing dependencies, this guide wil
 
     # On Windows with ThreatLocker - Change default installation paths
     $env:UV_PYTHON_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\python"
-
     powershell -ExecutionPolicy ByPass -c {$env:UV_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\bin"; irm https://astral.sh/uv/install.ps1 | iex}
 
-    # restart your shell
+    # restart your shell (i.e. close and open it again)
 
     uv init <project_dir>
     cd <project_dir>
@@ -182,3 +175,12 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     $env:UV_PYTHON_INSTALL_DIR = "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\python";
     $env:UV_CACHE_DIR =          "C:\Users\lcalderon\OneDrive - ENDAVA\EnDev\.local\uv\cache";
     ```
+## References
+
+https://docs.astral.sh/uv/getting-started/installation/
+
+https://docs.astral.sh/uv/reference/cli/
+
+https://pypi.org/project/uv/
+
+https://github.com/astral-sh/uv
