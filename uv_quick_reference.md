@@ -23,13 +23,15 @@ Whether you're setting up a new project or managing dependencies, this guide wil
 
     # restart your shell (i.e. close and open it again)
 
+    # To work with a git cloned project, do this inside the cloned folder
+    uv sync
+    uv run <file.py>
+
+    # To create a new project
     uv init <project_dir>
     cd <project_dir>
-
     uv run .\hello.py
-
     uv add <python_package_name_1> <python_package_name_2> ...
-
     uv run <file.py>
 ```
 
@@ -82,12 +84,15 @@ Whether you're setting up a new project or managing dependencies, this guide wil
 1. **Working with dependencies**
 
     ```bash
+    # To work with a git cloned project, do this inside the cloned folder
+    uv sync
+
     # To add a new dependency (version number is optional, install the latest)
-    uv add fastapi
+    uv add <python_package_name>
 
     # To add a new dependency, upgrade, or downgrade to a specific version
     # Operators: ~= == != <= >= < > ===
-    uv add fastapi=='0.115'
+    uv add <python_package_name>=='0.115'
 
     # To export the project's lockfile to a requirements.txt file
     uv export --format requirements-txt > requirements.txt
@@ -96,14 +101,14 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     uv add -r requirements.txt
 
     # To remove a dependency (and its internal dependencies)
-    uv remove fastapi
+    uv remove <python_package_name>
 
     # To view the dependency tree for the project
     uv tree
     
     # A simple update for a dependency to latest compatible version
-    uv remove fastapi
-    uv add fastapi
+    uv remove <python_package_name>
+    uv add <python_package_name>
     ```
 
 1. **Installing and managing Python itself**
@@ -134,7 +139,7 @@ Whether you're setting up a new project or managing dependencies, this guide wil
 
     # The pyproject.toml file can be modified to remove dependency restrictions
     # and attempt to update the package to the latest compatible version.
-    uv lock --upgrade-package fastapi
+    uv lock --upgrade-package <python_package_name>
 
     # Sync the project's dependencies with the environment.
     # For example, when cloning a project we need to sync the environment.
