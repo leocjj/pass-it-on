@@ -1,0 +1,17 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment files and directories
+.env
+.venv/
+
+# Editor files
+.vscode/
+.idea/
+
+# nicegui files
+.nicegui/
+
+# db files
+db.sqlite3*
