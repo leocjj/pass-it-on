@@ -1,0 +1,12 @@
+[project]
+name = "nicegui-demo"
+version = "0.1.0"
+description = "A demo of the nicegui library"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "nicegui>=2.11.1",
+    "openai>=1.64.0",
+    "pandas>=2.2.3",
+    "tortoise-orm>=0.24.1",
+]
