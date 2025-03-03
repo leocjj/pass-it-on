@@ -50,7 +50,7 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     $env:UV_PYTHON_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\python"
     powershell -ExecutionPolicy ByPass -c {$env:UV_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin"; irm https://astral.sh/uv/install.ps1 | iex}
 
-    # With pip
+    # Using pip
     pip install uv
 
     # Update uv
@@ -76,7 +76,8 @@ Whether you're setting up a new project or managing dependencies, this guide wil
 
     ```bash
     # It's created automatically when a Python file is executed.
-    # Doesn't need to be activated or deactivated, uv use a local .venv folder
+    # Doesn't need to be activated or deactivated, uv use pyproject.toml and
+    # uv.lock files to create a local environmente in the local .venv folder
     uv run .\hello.py
     ```
 
@@ -128,6 +129,9 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     uv run --python 3.12 -- python
     uv run --python 3.13 <file.py>
     uv run --python pypy@3.10 <file.py>
+
+    # Executing a Python module
+    uv run python -m <module_name> <args>
     ```
 
 1. **Other options**
@@ -141,23 +145,19 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     # and attempt to update the package to the latest compatible version.
     uv lock --upgrade-package <python_package_name>
 
-    # Sync the project's dependencies with the environment.
-    # For example, when cloning a project we need to sync the environment.
-    uv sync
-
     # Create a lockfile for the project's dependencies.
     uv lock
 
     # Build the project into distribution archives.
     uv build
-    
+
     # Publish the project to a package index.
     uv publish
-    
+
     # Connect local repository created after 'uv init', with a remote (GitHub) repository
     git remote add origin git@github.com:<user>/<repo>.git
     git push -u origin main
-    
+
     # To check/set environment variables in Powershell
     dir env:
     $env:UV_PYTHON_INSTALL_DIR
@@ -166,11 +166,11 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     # To add C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin to your PATH, either restart your shell or run:
     set Path=C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin;%Path%   (cmd)
     $env:Path = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\bin;$env:Path"   (powershell)
-    
+
     # To know the python and tools binaries directories
     uv python dir
     uv tool dir
-    
+
     # To uninstall
     uv cache clean
     rm -r "$(uv python dir)"
