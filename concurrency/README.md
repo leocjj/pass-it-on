@@ -43,26 +43,34 @@ Multitasking, multiprogramming, multiprocessing, multithreading...
 
 ## **CONCURRENCY**
 
-Is about **DEALING** with lots of things at once\
-When at least two threads are **MAKING PROGRESS**.
+Concurrency is about **managing** multiple tasks at the same time, allowing them to make progress independently—even if not simultaneously.
 
-    A more generalized form of parallelism that can include
-    time-slicing as a form of virtual parallelism.
+It means that at least two threads or processes are **making progress** during overlapping periods.
+
+    Concurrency is a broader concept than parallelism: it includes techniques like time-slicing, where a single CPU rapidly switches between tasks to create the illusion of simultaneous execution (virtual parallelism).
 
 ## **PARALLELISM**
 
-Is about **DOING**  lots of things at once.\
-When at least two threads are **EXECUTING SIMULTANEOUSLY**.
+
+Parallelism is about **performing** multiple tasks at the exact same time.
+
+It occurs when at least two threads or processes are **executing simultaneously**—for example, on separate CPU cores or processors.
+
+    True parallelism requires hardware support, such as multicore CPUs or distributed systems, enabling tasks to literally run side by side.
 
 ## **Asynchrony**
 
-Impression of concurrent or parallel tasking.\
-Don't block our application awaiting for some code response.\
-e.g. don't block our UI waiting for the data.
+Asynchrony enables a program to **initiate tasks and continue running without waiting for them to finish**.
 
-    The async call takes a call-back reference and returns execution back to
-    your code as soon as the request has been placed with the remote system.
-    e.g. AJAX, WebSockets, Promises, Observables, async/await, etc.
+It creates the impression of concurrency or parallelism, especially in I/O-bound operations, by not blocking the application while waiting for responses (e.g., fetching data from a server).
+
+    In asynchronous programming:
+    1. The program issues a request (such as a network call or file read)
+    2. Immediately regains control, often providing a callback, promise, or using constructs like async/await to handle the result when it arrives.
+
+    This approach keeps applications responsive—such as not freezing a UI while waiting for data.
+
+    Common examples include AJAX, WebSockets, Promises, Observables, and async/await in modern programming languages.
 
 ![Processes vs Threads vs Async](./processes_threads_async.png)
 
@@ -71,28 +79,51 @@ e.g. don't block our UI waiting for the data.
 
 ## Concurrency
 
-    When 2+ tasks can start, run, and complete in overlapping time periods.
+    Concurrency occurs when two or more tasks can begin, execute, and finish during overlapping time periods—though not necessarily at the exact same instant.
 
-    e.g. multitasking on a single-core machine use time slicing, this is,
-         CPU switches between threads (virtual multitasking)
+    For example, on a single-core CPU, multitasking is achieved through time slicing: the CPU rapidly switches between tasks, giving the illusion that they are running simultaneously (virtual multitasking).
 
         +--------+-----------+--------+-----------+--------+
         |  core  |  Task 1   | Task 2 |  Task 1   | Task 2 |
         +--------+-----------+--------+-----------+--------+
 
+    In this scenario, both tasks make progress over time, even though only one is actively running at any given moment.
+
 ## Parallelism
 
-    When two or more tasks literally run at the same time, truly multitasking
+    Parallelism occurs when two or more tasks are executed at the exact same time—true multitasking.
 
-    e.g. a multicore processor, a cluster of CPUs, several EC2 instances (AWS)
+    This is possible when there are multiple processing units available, such as multicore CPUs, clusters of computers, or distributed systems (e.g., several EC2 instances in the cloud).
 
         +--------+--------+--------------+
         | core 1 |      Task 1           |
         +--------+--------+--------------+
-        | core 2 |      Task 2     |
-        +--------+--------+--------+
+        | core 2 |      Task 2           |
+        +--------+--------+--------------+
 
+    In this scenario, each core or processor runs its own task simultaneously, so both tasks make progress at the same instant.
+
+---
+---
+
+### Example: visual representation of concurrency and parallelism
 ![Processes vs Threads vs Async](./example.webp)
+
+
+### Further reading:
+In-depth article on mastering asyncio and concurrency in Python
+[See this nice article in Medium](https://blog.stackademic.com/mastering-asyncio-and-concurrency-in-python-76b94d050a77)
+
+
+### Diagram:
+Comparison of concurrency and parallelism concepts
+![Processes vs Threads vs Async](./concurrency_and_paralellism.webp)
+
+
+### Diagram:
+How asynchronous programming works
+![Processes vs Threads vs Async](./concurrency_and_paralellism_async.webp)
+
 
 ---
 ---
