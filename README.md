@@ -1,7 +1,6 @@
 # Pass it on repository
 Each folder contain the files for each session
 
-
 ## [./concurrency](./concurrency)
 This folder contains the files for the concurrency and parallelism session.
 
