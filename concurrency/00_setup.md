@@ -15,7 +15,7 @@ For other installation options please go to [uv_quick_reference.md](https://gith
 ```shell
     # Clone the repository
     git clone https://github.com/leocjj/pass-it-on/
-    cd .\pass-it-on\concurrency\
+    cd pass-it-on/concurrency/
 
     # Execute the scripts
     uv run 01_intensive_cpu.py
