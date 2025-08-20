@@ -121,4 +121,3 @@ if __name__ == "__main__":
     load_with_thread_pool()
     asyncio.run(load_with_asyncio())
     print("Done!")
-    input("Press Enter to finish...")
