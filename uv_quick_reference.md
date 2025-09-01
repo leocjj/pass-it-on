@@ -184,7 +184,8 @@ Whether you're setting up a new project or managing dependencies, this guide wil
     $env:UV_PYTHON_INSTALL_DIR = "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\python";
     $env:UV_CACHE_DIR =          "C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\uv\cache";
 
-    # Other directory to set installations that works with ThreatLocker, this is, instead of C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\, use this:
+    # Other directory to set installations that works with ThreatLocker, this is,
+    # instead of C:\Users\<windows_user>\OneDrive - ENDAVA\EnDev\.local\, use this:
     C:\Endava\EndevLocal\.local
     ```
 
